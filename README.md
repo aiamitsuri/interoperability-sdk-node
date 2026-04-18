@@ -111,7 +111,7 @@ Concurrent Usage
         pagination: Pagination;
     }
     
-    class JVMSDKit {
+    class NodeSDKit {
         private async fetchInteroperability(params: FetchParams): Promise<string> {
             const res = await wasm.fetch_from_js(params);
             return JSON.stringify(res);
@@ -140,7 +140,7 @@ Concurrent Usage
     }
     
     async function main() {
-        const sdk = new JVMSDKit();
+        const sdk = new NodeSDKit();
         console.log("--- Bhilani Interop SDK (TS Concurrency) ---");
     
         const pageRange = [1, 2, 3, 4, 5];
