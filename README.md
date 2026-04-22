@@ -1,4 +1,4 @@
-# BHILANI Interop SDK Suite by kantini, chanchali
+Welcome to **BHILANI**, an **Agentic Interop SDK Suite** by **Kantini, Chanchali**
 
 Run SDK
 
@@ -14,34 +14,28 @@ Basic Usage
 
     import * as wasm from "@aiamitsuri/interoperability-wrapper-wasm";
     
-    interface FetchParams {
-        page: string;
-        [key: string]: any;
-    }
+    const params = {
+        language: null,
+        integration: null,
+        crates: null,
+        developmentkit: null,
+        page: "1",
+        ids: null
+    };
     
-    export class NodeSDKit {
-    
-        private async fetchInteroperability(params: FetchParams): Promise<string> {
-            try {
-                const res = await wasm.fetch_from_js(params);
-                return JSON.stringify(res, null, 2);
-            } catch (error) {
-                throw new Error(`WASM Fetch failed: ${String(error)}`);
-            }
+    const fetchInteroperability = async (payload: any) => {
+        try {
+            const res = await wasm.fetch_from_js(payload);
+            return JSON.stringify(res, null, 2);
+        } catch (error) {
+            return `WASM Fetch failed: ${error}`;
         }
+    };
     
-        public async runDemo(): Promise<void> {
-            const params: FetchParams = { page: "1" };
+    console.log("Node SDK");
     
-            console.log("Node SDK");
-    
-            const response = await this.fetchInteroperability(params);
-            console.log(response);
-        }
-    }
-    
-    const sdk = new NodeSDKit();
-    await sdk.runDemo();
+    const response = await fetchInteroperability(params);
+    console.log(response);
 
 Dynamic Usage
 
